@@ -51,7 +51,7 @@ public final class Money {
     }
 
     public boolean hasSameCurrency(Money other) {
-        return this.currency.equals(other.currency);
+        return other != null && this.currency.equals(other.currency);
     }
 
     private void requireSameCurrency(Money other) {

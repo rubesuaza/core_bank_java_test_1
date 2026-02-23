@@ -1,0 +1,117 @@
+{
+  "status": "needs_correction",
+  "audit_evidence": {
+    "files_inspected": [
+      "build.gradle.kts",
+      "src/main/java/com/bank/core/CoreBankApplication.java",
+      "src/main/java/com/bank/core/domain/entity/Account.java",
+      "src/main/java/com/bank/core/domain/valueobject/Money.java",
+      "src/main/java/com/bank/core/domain/exception/DomainException.java",
+      "src/main/java/com/bank/core/domain/exception/InsufficientFundsException.java",
+      "src/main/java/com/bank/core/domain/model/AccountStatus.java",
+      "src/main/java/com/bank/core/domain/model/TransactionType.java",
+      "src/main/resources/application.yml",
+      "src/test/java/com/bank/core/domain/entity/AccountTest.java",
+      "src/test/java/com/bank/core/domain/valueobject/MoneyTest.java",
+      "build/reports/tests/test/index.html"
+    ],
+    "commands_run": [
+      "find src -type f -name '*.java'",
+      "grep @ControllerAdvice|ControllerAdvice|ExceptionHandler",
+      "grep /api/v1/bank|RestController|@PostMapping|@GetMapping",
+      "grep @Entity|JpaRepository|Repository",
+      "grep @Transactional",
+      "grep @Valid|JSR-303",
+      "./gradlew test --no-daemon",
+      "ls -R src/"
+    ]
+  },
+  "checklist_compliance": {
+    "passed_items": [
+      "Java 17 (LTS): Proyecto configurado con Java 17",
+      "Spring Boot 3.2+ (3.2.0): Framework inicializado",
+      "Gradle (Kotlin DSL): Sistema de construcción configurado",
+      "Estructura Onion: Paquetes com.bank.core.domain, application, infrastructure, web presentes (aunque application/infrastructure/web vacíos)",
+      "Account (Agregado Raíz) con balance, accountNumber, ownerId, status",
+      "Money Objeto de Valor inmutable",
+      "Regla Fondos Insuficientes: Implementada en Account.withdraw y transferTo",
+      "Regla Monto Positivo: validatePositiveAmount en Account, Money valida >= 0",
+      "Regla Cuentas Activas: requireActive() en deposit, withdraw, transferTo",
+      "Regla Consistencia de Divisa: validateSameCurrency en todas las operaciones",
+      "Excepciones de Dominio: DomainException, InsufficientFundsException, InvalidAmountException, InactiveAccountException, CurrencyMismatchException, InvalidTransferException",
+      "Pruebas Unitarias: AccountTest y MoneyTest con JUnit 5 + AssertJ (27 tests)",
+      "Aislamiento de Dominio: El paquete domain solo importa com.bank.core.domain.* y java.* (no Spring, JPA, etc.)"
+    ],
+    "failed_items": [
+      "Entidad Transaction con source, destination, amount, type: No existe la entidad Transaction en el dominio",
+      "Esquema BD PostgreSQL: Tabla accounts, tabla transactions con FKs - No existen entidades JPA ni migraciones",
+      "Implementación JPA: Entidades JPA separadas, mapeadores Dominio<->JPA - No existen (solo carpetas vacías en infrastructure/persistence)",
+      "@Transactional en capa de aplicación: No existe capa application con servicios",
+      "POST /accounts, GET /accounts/{id}/balance, POST /transactions/transfer: No existen controladores REST",
+      "DTOs Request/Response, @Valid JSR-303: No existen DTOs ni validación de entrada",
+      "Manejador global de excepciones (@ControllerAdvice): No encontrado",
+      "Pruebas de Servicio: Casos de uso con Mockito para repositorios - No existen",
+      "Pruebas de Integración: Adaptadores de persistencia con BD de prueba - No existen"
+    ]
+  },
+  "structure_compliance": {
+    "score": 40,
+    "missing_paths": [
+      "com.bank.core.application.service/* (carpeta vacía, sin servicios)",
+      "com.bank.core.application.port/* (carpeta vacía, sin puertos/repositorios de dominio)",
+      "com.bank.core.infrastructure.persistence/* (carpeta vacía, sin entidades JPA ni repositorios)",
+      "com.bank.core.infrastructure.config/* (carpeta vacía)",
+      "com.bank.core.web.controller/* (carpeta vacía, sin controladores REST)",
+      "com.bank.core.web.dto/* (carpeta vacía, sin DTOs)",
+      "com.bank.core.web.mapper/* (carpeta vacía, sin mapeadores)",
+      "com.bank.core.domain.entity/Transaction.java (entidad faltante)",
+      "com.bank.core.domain.repository/* (carpeta vacía, sin interfaces de repositorio)"
+    ]
+  },
+  "test_results": {
+    "command": "./gradlew test --no-daemon",
+    "passed": true,
+    "total": 27,
+    "failures": 0,
+    "output_summary": "BUILD SUCCESSFUL - 27 tests (14 AccountTest, 13 MoneyTest), 100% success rate, 0 failures"
+  },
+  "gaps": [
+    {
+      "severity": "critical",
+      "category": "infrastructure",
+      "description": "No existe capa de persistencia: faltan entidades JPA (AccountEntity, TransactionEntity), repositorios JPA, mapeadores Dominio<->JPA. Las carpetas infrastructure/persistence y config están vacías.",
+      "fix_suggestion": "Implementar en infrastructure/persistence: AccountJpaEntity, TransactionJpaEntity, AccountJpaRepository, AccountPersistenceAdapter con mapeadores. Configurar JPA para tablas accounts y transactions."
+    },
+    {
+      "severity": "critical",
+      "category": "infrastructure",
+      "description": "No existe capa Web/API REST. No hay controladores, DTOs ni manejador global de excepciones. Los endpoints POST /accounts, GET /accounts/{id}/balance, POST /transactions/transfer definidos en el checklist no existen.",
+      "fix_suggestion": "Crear en web/controller: AccountController, TransactionController bajo base path /api/v1/bank. Crear DTOs en web/dto, mapeadores en web/mapper. Implementar @ControllerAdvice para mapear DomainException a HTTP Status."
+    },
+    {
+      "severity": "critical",
+      "category": "domain",
+      "description": "Entidad Transaction ausente. El checklist exige Transaction con source, destination, amount, type.",
+      "fix_suggestion": "Crear com.bank.core.domain.entity/Transaction.java con atributos source (Account o ID), destination, amount (Money), type (TransactionType). Integrar con el flujo de transferencias."
+    },
+    {
+      "severity": "critical",
+      "category": "infrastructure",
+      "description": "Capa application vacía: no existen servicios de casos de uso ni puertos (interfaces de repositorio). No hay @Transactional ni orquestación de operaciones.",
+      "fix_suggestion": "Crear AccountRepository (puerto) en domain/repository. Implementar CreateAccountService, TransferService en application/service. Usar @Transactional en métodos que modifican estado."
+    },
+    {
+      "severity": "medium",
+      "category": "tests",
+      "description": "Faltan pruebas de servicio (casos de uso con Mockito) y pruebas de integración (adaptadores de persistencia con BD de prueba).",
+      "fix_suggestion": "Crear TransferServiceTest, CreateAccountServiceTest con mocks. Crear AccountPersistenceAdapterTest como @DataJpaTest o con Testcontainers."
+    },
+    {
+      "severity": "medium",
+      "category": "infrastructure",
+      "description": "No hay validación JSR-303 (@Valid) en endpoints REST. spring-boot-starter-validation no está en dependencias.",
+      "fix_suggestion": "Añadir implementation(\"org.springframework.boot:spring-boot-starter-validation\") y usar @Valid en DTOs de request."
+    }
+  ],
+  "next_recommended_action": "implement_infrastructure"
+}
