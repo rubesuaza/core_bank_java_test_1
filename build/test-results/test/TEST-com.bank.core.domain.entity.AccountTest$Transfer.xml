@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Transferencia" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-02-23T18:44:09" hostname="RubenS" time="0.111">
+  <properties/>
+  <testcase name="transferirACuentaDiferenteDescuentaOrigenYAcreditaDestino()" classname="com.bank.core.domain.entity.AccountTest$Transfer" time="0.087"/>
+  <testcase name="transferirALaMismaCuentaLanzaExcepcion()" classname="com.bank.core.domain.entity.AccountTest$Transfer" time="0.006"/>
+  <testcase name="transferirACuentaNoActivaLanzaExcepcion()" classname="com.bank.core.domain.entity.AccountTest$Transfer" time="0.002"/>
+  <testcase name="transferirConFondosInsuficientesLanzaExcepcion()" classname="com.bank.core.domain.entity.AccountTest$Transfer" time="0.004"/>
+  <testcase name="transferirConDivisaDiferenteLanzaExcepcion()" classname="com.bank.core.domain.entity.AccountTest$Transfer" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

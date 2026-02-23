@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Suma" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-02-23T18:44:09" hostname="RubenS" time="0.008">
+  <properties/>
+  <testcase name="sumaRetornaNuevoObjetoInmutable()" classname="com.bank.core.domain.valueobject.MoneyTest$Add" time="0.002"/>
+  <testcase name="sumaConDivisasDiferentesLanzaExcepcion()" classname="com.bank.core.domain.valueobject.MoneyTest$Add" time="0.002"/>
+  <testcase name="sumaDosMontosMismaDivisa()" classname="com.bank.core.domain.valueobject.MoneyTest$Add" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Creación" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-02-23T18:44:09" hostname="RubenS" time="0.016">
+  <properties/>
+  <testcase name="rechazaMontoNulo()" classname="com.bank.core.domain.valueobject.MoneyTest$Creation" time="0.001"/>
+  <testcase name="rechazaDivisaNula()" classname="com.bank.core.domain.valueobject.MoneyTest$Creation" time="0.002"/>
+  <testcase name="aceptaMontoCero()" classname="com.bank.core.domain.valueobject.MoneyTest$Creation" time="0.002"/>
+  <testcase name="creaDineroConMontoYDivisaValidos()" classname="com.bank.core.domain.valueobject.MoneyTest$Creation" time="0.001"/>
+  <testcase name="rechazaMontoNegativo()" classname="com.bank.core.domain.valueobject.MoneyTest$Creation" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
