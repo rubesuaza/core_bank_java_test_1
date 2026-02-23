@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.bank.core.domain.model.AccountTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2026-02-23T16:11:40" hostname="RubenS" time="1.171">
+  <properties/>
+  <testcase name="shouldThrowInactiveAccountExceptionWhenDepositingToClosedAccount()" classname="com.bank.core.domain.model.AccountTest" time="0.244"/>
+  <testcase name="shouldThrowInvalidAmountExceptionWhenWithdrawingZero()" classname="com.bank.core.domain.model.AccountTest" time="0.013"/>
+  <testcase name="shouldCreateTransactionForDeposit()" classname="com.bank.core.domain.model.AccountTest" time="0.031"/>
+  <testcase name="shouldThrowInactiveAccountExceptionWhenWithdrawingFromFrozenAccount()" classname="com.bank.core.domain.model.AccountTest" time="0.005"/>
+  <testcase name="shouldThrowInvalidAmountExceptionWhenDepositingZero()" classname="com.bank.core.domain.model.AccountTest" time="0.004"/>
+  <testcase name="shouldThrowInsufficientFundsExceptionWhenWithdrawingMoreThanBalance()" classname="com.bank.core.domain.model.AccountTest" time="0.003"/>
+  <testcase name="shouldDepositAndIncreaseBalance()" classname="com.bank.core.domain.model.AccountTest" time="0.011"/>
+  <testcase name="shouldThrowInvalidAmountExceptionWhenWithdrawingNegative()" classname="com.bank.core.domain.model.AccountTest" time="0.007"/>
+  <testcase name="shouldThrowCurrencyMismatchExceptionWhenDepositingDifferentCurrency()" classname="com.bank.core.domain.model.AccountTest" time="0.003"/>
+  <testcase name="shouldWithdrawAndDecreaseBalance()" classname="com.bank.core.domain.model.AccountTest" time="0.002"/>
+  <testcase name="shouldCreateTransactionForWithdrawal()" classname="com.bank.core.domain.model.AccountTest" time="0.043"/>
+  <testcase name="shouldThrowCurrencyMismatchExceptionWhenWithdrawingDifferentCurrency()" classname="com.bank.core.domain.model.AccountTest" time="0.003"/>
+  <testcase name="shouldThrowInsufficientFundsExceptionWhenWithdrawingExactBalanceResultsInNegative()" classname="com.bank.core.domain.model.AccountTest" time="0.008"/>
+  <testcase name="shouldThrowInvalidAmountExceptionWhenDepositingNegative()" classname="com.bank.core.domain.model.AccountTest" time="0.003"/>
+  <testcase name="shouldThrowInactiveAccountExceptionWhenDepositingToFrozenAccount()" classname="com.bank.core.domain.model.AccountTest" time="0.007"/>
+  <testcase name="shouldCreateActiveAccount()" classname="com.bank.core.domain.model.AccountTest" time="0.717"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
