@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: core_bank
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/core_bank
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+
+  # H2 para desarrollo local (descomentar para usar)
+  # datasource:
+  #   url: jdbc:h2:mem:core_bank;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+  #   username: sa
+  #   password:
+  #   driver-class-name: org.h2.Driver
+  # h2:
+  #   console:
+  #     enabled: true
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+
+server:
+  port: 8080
