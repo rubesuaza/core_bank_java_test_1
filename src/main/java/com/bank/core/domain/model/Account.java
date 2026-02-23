@@ -4,6 +4,7 @@ import com.bank.core.domain.exception.InactiveAccountException;
 import com.bank.core.domain.exception.InvalidAmountException;
 import com.bank.core.domain.exception.InsufficientFundsException;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 /**
@@ -11,8 +12,8 @@ import java.util.UUID;
  */
 public final class Account {
 
-    private UUID accountId;
-    private String accountNumber;
+    private final UUID accountId;
+    private final String accountNumber;
     private Money balance;
     private final UUID ownerId;
     private AccountStatus status;
@@ -56,7 +57,7 @@ public final class Account {
         ensureActive();
         validateAmount(amount);
         ensureSameCurrency(amount);
-        if (!balance.isGreaterThanOrEqual(amount)) {
+        if (hasInsufficientFunds(amount)) {
             throw new InsufficientFundsException(
                     String.format("Insufficient funds: balance %s is less than requested %s", balance, amount));
         }
@@ -71,7 +72,7 @@ public final class Account {
                 accountId,
                 amount,
                 TransactionType.DEPOSIT,
-                java.time.LocalDateTime.now()
+                LocalDateTime.now()
         );
     }
 
@@ -83,7 +84,7 @@ public final class Account {
                 null,
                 amount,
                 TransactionType.WITHDRAWAL,
-                java.time.LocalDateTime.now()
+                LocalDateTime.now()
         );
     }
 
@@ -95,9 +96,17 @@ public final class Account {
     }
 
     private void validateAmount(Money amount) {
-        if (amount == null || amount.amount().compareTo(java.math.BigDecimal.ZERO) <= 0) {
+        if (isInvalidAmount(amount)) {
             throw new InvalidAmountException("Amount must be greater than zero");
         }
+    }
+
+    private boolean hasInsufficientFunds(Money amount) {
+        return !balance.isGreaterThanOrEqual(amount);
+    }
+
+    private static boolean isInvalidAmount(Money amount) {
+        return amount == null || amount.amount().compareTo(java.math.BigDecimal.ZERO) <= 0;
     }
 
     private void ensureSameCurrency(Money amount) {
