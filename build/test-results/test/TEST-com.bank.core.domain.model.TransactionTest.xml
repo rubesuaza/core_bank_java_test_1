@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.bank.core.domain.model.TransactionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-02-23T16:17:45" hostname="RubenS" time="0.02">
+  <properties/>
+  <testcase name="shouldCreateDepositTransactionWithNullSource()" classname="com.bank.core.domain.model.TransactionTest" time="0.002"/>
+  <testcase name="shouldCreateWithdrawalTransactionWithNullDestination()" classname="com.bank.core.domain.model.TransactionTest" time="0.007"/>
+  <testcase name="shouldCreateTransactionWithAllFields()" classname="com.bank.core.domain.model.TransactionTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

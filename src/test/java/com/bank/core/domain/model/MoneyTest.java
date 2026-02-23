@@ -81,11 +81,58 @@ class MoneyTest {
     }
 
     @Test
+    void shouldThrowExceptionWhenAmountIsNull() {
+        assertThatThrownBy(() -> new Money(null, "USD"))
+                .isInstanceOf(NullPointerException.class)
+                .hasMessageContaining("amount");
+    }
+
+    @Test
+    void shouldThrowExceptionWhenCurrencyIsNull() {
+        assertThatThrownBy(() -> new Money(new BigDecimal("100"), null))
+                .isInstanceOf(NullPointerException.class)
+                .hasMessageContaining("currency");
+    }
+
+    @Test
+    void shouldThrowExceptionWhenCurrencyIsBlank() {
+        assertThatThrownBy(() -> new Money(new BigDecimal("100"), ""))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("blank");
+
+        assertThatThrownBy(() -> new Money(new BigDecimal("100"), "   "))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("blank");
+    }
+
+    @Test
     void moneyShouldBeImmutable() {
         Money original = new Money(new BigDecimal("100"), "USD");
         Money added = original.add(new Money(new BigDecimal("50"), "USD"));
 
         assertThat(original.amount()).isEqualByComparingTo(new BigDecimal("100"));
         assertThat(added.amount()).isEqualByComparingTo(new BigDecimal("150"));
+    }
+
+    @Test
+    void shouldImplementEqualsCorrectly() {
+        Money a = new Money(new BigDecimal("100.00"), "USD");
+        Money b = new Money(new BigDecimal("100.00"), "USD");
+        Money c = new Money(new BigDecimal("100.01"), "USD");
+        Money d = new Money(new BigDecimal("100"), "EUR");
+
+        assertThat(a).isEqualTo(b);
+        assertThat(a).isNotEqualTo(c);
+        assertThat(a).isNotEqualTo(d);
+        assertThat(a.equals(null)).isFalse();
+        assertThat(a).isEqualTo(a);
+    }
+
+    @Test
+    void shouldImplementHashCodeConsistentlyWithEquals() {
+        Money a = new Money(new BigDecimal("100.00"), "USD");
+        Money b = new Money(new BigDecimal("100.00"), "USD");
+
+        assertThat(a.hashCode()).isEqualTo(b.hashCode());
     }
 }

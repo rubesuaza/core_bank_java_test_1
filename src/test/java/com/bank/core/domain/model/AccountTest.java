@@ -98,6 +98,24 @@ class AccountTest {
     }
 
     @Test
+    void shouldThrowInvalidAmountExceptionWhenDepositingNull() {
+        Account account = createActiveAccount("100");
+
+        assertThatThrownBy(() -> account.deposit(null))
+                .isInstanceOf(InvalidAmountException.class)
+                .hasMessageContaining("greater than zero");
+    }
+
+    @Test
+    void shouldThrowInvalidAmountExceptionWhenWithdrawingNull() {
+        Account account = createActiveAccount("100");
+
+        assertThatThrownBy(() -> account.withdraw(null))
+                .isInstanceOf(InvalidAmountException.class)
+                .hasMessageContaining("greater than zero");
+    }
+
+    @Test
     void shouldThrowInvalidAmountExceptionWhenDepositingZero() {
         Account account = createActiveAccount("100");
 
