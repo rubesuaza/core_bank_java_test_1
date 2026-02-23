@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bank.core.domain.model.MoneyTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-02-23T21:49:42" hostname="RubenS" time="0.031">
+<testsuite name="com.bank.core.domain.model.MoneyTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-02-23T21:54:33" hostname="RubenS" time="0.032">
   <properties/>
   <testcase name="shouldSubtractMoneyWithSameCurrency()" classname="com.bank.core.domain.model.MoneyTest" time="0.001"/>
   <testcase name="shouldThrowInsufficientFundsExceptionWhenSubtractResultIsNegative()" classname="com.bank.core.domain.model.MoneyTest" time="0.003"/>
   <testcase name="shouldCreateMoneyWithValidAmountAndCurrency()" classname="com.bank.core.domain.model.MoneyTest" time="0.002"/>
   <testcase name="shouldThrowInvalidAmountExceptionWhenAmountIsNegative()" classname="com.bank.core.domain.model.MoneyTest" time="0.003"/>
-  <testcase name="isGreaterThanOrEqual_shouldReturnTrueWhenGreaterOrEqual()" classname="com.bank.core.domain.model.MoneyTest" time="0.001"/>
+  <testcase name="isGreaterThanOrEqual_shouldReturnTrueWhenGreaterOrEqual()" classname="com.bank.core.domain.model.MoneyTest" time="0.003"/>
   <testcase name="shouldAddMoneyWithSameCurrency()" classname="com.bank.core.domain.model.MoneyTest" time="0.002"/>
-  <testcase name="isGreaterThanOrEqual_shouldReturnFalseWhenLess()" classname="com.bank.core.domain.model.MoneyTest" time="0.002"/>
-  <testcase name="shouldThrowCurrencyMismatchExceptionWhenAddingDifferentCurrencies()" classname="com.bank.core.domain.model.MoneyTest" time="0.004"/>
+  <testcase name="isGreaterThanOrEqual_shouldReturnFalseWhenLess()" classname="com.bank.core.domain.model.MoneyTest" time="0.001"/>
+  <testcase name="shouldThrowCurrencyMismatchExceptionWhenAddingDifferentCurrencies()" classname="com.bank.core.domain.model.MoneyTest" time="0.003"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

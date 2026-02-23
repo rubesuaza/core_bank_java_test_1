@@ -3,6 +3,7 @@ package com.bank.core.application.usecase;
 import com.bank.core.application.port.input.GetBalanceUseCase;
 import com.bank.core.application.port.output.AccountRepository;
 import com.bank.core.domain.exception.AccountNotFoundException;
+import com.bank.core.domain.model.Account;
 import com.bank.core.domain.model.Money;
 
 import java.util.UUID;
@@ -21,7 +22,7 @@ public class GetBalanceService implements GetBalanceUseCase {
     @Override
     public Money getBalance(UUID accountId) {
         return accountRepository.findById(accountId)
-                .map(account -> account.getBalance())
+                .map(Account::getBalance)
                 .orElseThrow(() -> new AccountNotFoundException(accountId));
     }
 }

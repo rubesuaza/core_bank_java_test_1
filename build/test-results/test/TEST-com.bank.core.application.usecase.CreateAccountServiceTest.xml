@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bank.core.application.usecase.CreateAccountServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-02-23T21:49:41" hostname="RubenS" time="0.751">
+<testsuite name="com.bank.core.application.usecase.CreateAccountServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-02-23T21:54:32" hostname="RubenS" time="0.453">
   <properties/>
-  <testcase name="shouldCreateAccountWithZeroInitialBalance()" classname="com.bank.core.application.usecase.CreateAccountServiceTest" time="0.683"/>
-  <testcase name="shouldCreateAccountWithGeneratedNumberAndSaveToRepository()" classname="com.bank.core.application.usecase.CreateAccountServiceTest" time="0.048"/>
-  <testcase name="shouldReturnSavedAccountFromRepository()" classname="com.bank.core.application.usecase.CreateAccountServiceTest" time="0.011"/>
+  <testcase name="shouldCreateAccountWithZeroInitialBalance()" classname="com.bank.core.application.usecase.CreateAccountServiceTest" time="0.409"/>
+  <testcase name="shouldCreateAccountWithGeneratedNumberAndSaveToRepository()" classname="com.bank.core.application.usecase.CreateAccountServiceTest" time="0.027"/>
+  <testcase name="shouldReturnSavedAccountFromRepository()" classname="com.bank.core.application.usecase.CreateAccountServiceTest" time="0.007"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

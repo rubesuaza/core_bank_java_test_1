@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bank.core.CoreBankApplicationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-02-23T21:49:39" hostname="RubenS" time="1.558">
+<testsuite name="com.bank.core.CoreBankApplicationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-02-23T21:54:31" hostname="RubenS" time="1.334">
   <properties/>
-  <testcase name="contextLoads()" classname="com.bank.core.CoreBankApplicationTest" time="1.558"/>
-  <system-out><![CDATA[16:49:30.313 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.bank.core.CoreBankApplicationTest]: CoreBankApplicationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-16:49:30.547 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.bank.core.CoreBankApplication for test class com.bank.core.CoreBankApplicationTest
+  <testcase name="contextLoads()" classname="com.bank.core.CoreBankApplicationTest" time="1.334"/>
+  <system-out><![CDATA[16:54:21.891 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.bank.core.CoreBankApplicationTest]: CoreBankApplicationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+16:54:22.135 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.bank.core.CoreBankApplication for test class com.bank.core.CoreBankApplicationTest
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -13,22 +13,22 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.2.0)
 
-2026-02-23T16:49:31.656-05:00  INFO 17884 --- [    Test worker] com.bank.core.CoreBankApplicationTest    : Starting CoreBankApplicationTest using Java 17.0.18 with PID 17884 (started by root in /root/agent_code_generator/workspaces/core_bank_java/core_bank_java_test_1)
-2026-02-23T16:49:31.660-05:00  INFO 17884 --- [    Test worker] com.bank.core.CoreBankApplicationTest    : No active profile set, falling back to 1 default profile: "default"
-2026-02-23T16:49:33.124-05:00  INFO 17884 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-02-23T16:49:33.255-05:00  INFO 17884 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 114 ms. Found 2 JPA repository interfaces.
-2026-02-23T16:49:34.065-05:00  INFO 17884 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-02-23T16:49:34.217-05:00  INFO 17884 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
-2026-02-23T16:49:34.333-05:00  INFO 17884 --- [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-02-23T16:49:34.724-05:00  INFO 17884 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-02-23T16:49:34.780-05:00  INFO 17884 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-02-23T16:49:35.084-05:00  INFO 17884 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
-2026-02-23T16:49:35.088-05:00  INFO 17884 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-02-23T16:49:35.141-05:00  WARN 17884 --- [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-02-23T16:49:36.837-05:00  INFO 17884 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-02-23T16:49:36.897-05:00  INFO 17884 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-02-23T16:49:38.154-05:00  WARN 17884 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-02-23T16:49:39.399-05:00  INFO 17884 --- [    Test worker] com.bank.core.CoreBankApplicationTest    : Started CoreBankApplicationTest in 8.501 seconds (process running for 10.962)
+2026-02-23T16:54:22.978-05:00  INFO 19959 --- [    Test worker] com.bank.core.CoreBankApplicationTest    : Starting CoreBankApplicationTest using Java 17.0.18 with PID 19959 (started by root in /root/agent_code_generator/workspaces/core_bank_java/core_bank_java_test_1)
+2026-02-23T16:54:22.981-05:00  INFO 19959 --- [    Test worker] com.bank.core.CoreBankApplicationTest    : No active profile set, falling back to 1 default profile: "default"
+2026-02-23T16:54:24.346-05:00  INFO 19959 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-02-23T16:54:24.462-05:00  INFO 19959 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 101 ms. Found 2 JPA repository interfaces.
+2026-02-23T16:54:25.559-05:00  INFO 19959 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-02-23T16:54:25.698-05:00  INFO 19959 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2026-02-23T16:54:25.774-05:00  INFO 19959 --- [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-02-23T16:54:26.398-05:00  INFO 19959 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-02-23T16:54:26.447-05:00  INFO 19959 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-02-23T16:54:26.782-05:00  INFO 19959 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=SA
+2026-02-23T16:54:26.787-05:00  INFO 19959 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-02-23T16:54:26.848-05:00  WARN 19959 --- [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-02-23T16:54:29.137-05:00  INFO 19959 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-02-23T16:54:29.181-05:00  INFO 19959 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-02-23T16:54:30.311-05:00  WARN 19959 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-23T16:54:31.296-05:00  INFO 19959 --- [    Test worker] com.bank.core.CoreBankApplicationTest    : Started CoreBankApplicationTest in 8.843 seconds (process running for 11.091)
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

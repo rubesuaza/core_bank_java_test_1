@@ -1,5 +1,6 @@
 package com.bank.core.domain.model;
 
+import com.bank.core.domain.exception.CurrencyMismatchException;
 import com.bank.core.domain.exception.InactiveAccountException;
 import com.bank.core.domain.exception.InsufficientFundsException;
 import com.bank.core.domain.exception.InvalidAmountException;
@@ -108,7 +109,7 @@ public class Account {
 
     private void validateCurrencyMatch(Money amount) {
         if (!this.balance.getCurrency().equals(amount.getCurrency())) {
-            throw new com.bank.core.domain.exception.CurrencyMismatchException(
+            throw new CurrencyMismatchException(
                     "Transaction currency " + amount.getCurrency() +
                             " does not match account currency " + this.balance.getCurrency());
         }

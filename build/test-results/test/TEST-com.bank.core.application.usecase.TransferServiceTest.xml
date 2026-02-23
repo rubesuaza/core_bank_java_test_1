@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bank.core.application.usecase.TransferServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-02-23T21:49:41" hostname="RubenS" time="0.219">
+<testsuite name="com.bank.core.application.usecase.TransferServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-02-23T21:54:33" hostname="RubenS" time="0.11">
   <properties/>
-  <testcase name="shouldThrowAccountNotFoundExceptionWhenSourceAccountDoesNotExist()" classname="com.bank.core.application.usecase.TransferServiceTest" time="0.177"/>
-  <testcase name="shouldThrowAccountNotFoundExceptionWhenDestinationAccountDoesNotExist()" classname="com.bank.core.application.usecase.TransferServiceTest" time="0.011"/>
-  <testcase name="shouldTransferMoneyBetweenAccountsAndSaveTransaction()" classname="com.bank.core.application.usecase.TransferServiceTest" time="0.025"/>
+  <testcase name="shouldThrowAccountNotFoundExceptionWhenSourceAccountDoesNotExist()" classname="com.bank.core.application.usecase.TransferServiceTest" time="0.079"/>
+  <testcase name="shouldThrowAccountNotFoundExceptionWhenDestinationAccountDoesNotExist()" classname="com.bank.core.application.usecase.TransferServiceTest" time="0.009"/>
+  <testcase name="shouldTransferMoneyBetweenAccountsAndSaveTransaction()" classname="com.bank.core.application.usecase.TransferServiceTest" time="0.017"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

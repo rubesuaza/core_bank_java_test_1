@@ -8,6 +8,8 @@ import com.bank.core.domain.model.Account;
 import com.bank.core.domain.model.Money;
 import com.bank.core.domain.model.Transaction;
 import com.bank.core.domain.model.TransactionType;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -16,6 +18,7 @@ import java.util.UUID;
 /**
  * Caso de uso: transferir dinero entre cuentas.
  */
+@Service
 public class TransferService implements TransferUseCase {
 
     private final AccountRepository accountRepository;
@@ -28,6 +31,7 @@ public class TransferService implements TransferUseCase {
     }
 
     @Override
+    @Transactional
     public void transfer(UUID fromAccountId, UUID toAccountId, BigDecimal amount) {
         Account source = accountRepository.findById(fromAccountId)
                 .orElseThrow(() -> new AccountNotFoundException(fromAccountId));

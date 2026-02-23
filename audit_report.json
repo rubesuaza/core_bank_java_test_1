@@ -1,0 +1,116 @@
+{
+  "status": "needs_correction",
+  "audit_evidence": {
+    "files_inspected": [
+      "build.gradle.kts",
+      "settings.gradle.kts",
+      "src/main/java/com/bank/core/domain/model/Account.java",
+      "src/main/java/com/bank/core/domain/model/Transaction.java",
+      "src/main/java/com/bank/core/domain/model/Money.java",
+      "src/main/java/com/bank/core/domain/exception/InsufficientFundsException.java",
+      "src/main/java/com/bank/core/domain/exception/DomainException.java",
+      "src/main/java/com/bank/core/infrastructure/persistence/entity/AccountEntity.java",
+      "src/main/java/com/bank/core/infrastructure/persistence/entity/TransactionEntity.java",
+      "src/main/java/com/bank/core/infrastructure/adapter/output/AccountRepositoryAdapter.java",
+      "src/main/java/com/bank/core/application/usecase/TransferService.java",
+      "src/main/java/com/bank/core/infrastructure/adapter/input/package-info.java",
+      "src/main/resources/application.yml",
+      "src/test/java/com/bank/core/CoreBankApplicationTest.java",
+      "build/reports/tests/test/index.html"
+    ],
+    "commands_run": [
+      "find . -type f \\( -name \"*.java\" -o -name \"*.gradle*\" \\) | grep -v build",
+      "grep -r '@RestController|@Controller|ControllerAdvice'",
+      "grep -r '/api/v1/bank|/accounts|/transactions'",
+      "grep -r '@Valid|@RequestBody|@PathVariable|DTO'",
+      "grep -r '@SpringBootTest|@WebMvcTest|@DataJpaTest'",
+      "grep -r '@Transactional'",
+      "./gradlew test"
+    ]
+  },
+  "checklist_compliance": {
+    "passed_items": [
+      "Java 17 (LTS): sourceCompatibility JavaVersion.VERSION_17 en build.gradle.kts",
+      "Spring Boot 3.2+: version 3.2.0 configurada",
+      "Gradle (Kotlin DSL): build.gradle.kts presente",
+      "Estructura com.bank.core.domain: Account, Transaction, Money presentes",
+      "Estructura com.bank.core.application.port.input: CreateAccountUseCase, GetBalanceUseCase, TransferUseCase",
+      "Estructura com.bank.core.application.port.output: AccountRepository, TransactionRepository, AccountNumberGenerator",
+      "Estructura com.bank.core.application.usecase: CreateAccountService, GetBalanceService, TransferService",
+      "Estructura com.bank.core.infrastructure.adapter.output: AccountRepositoryAdapter, TransactionRepositoryAdapter, UuidAccountNumberGenerator",
+      "Account (Agregado Raíz) con balance, accountNumber, ownerId, status",
+      "Transaction con source, destination, amount, type",
+      "Money Objeto de Valor inmutable",
+      "Regla Fondos Insuficientes: Account.withdraw valida balance >= amount",
+      "Regla Monto Positivo: Transaction y Money validan amount > 0",
+      "Regla Cuentas Activas: Account.validateActiveStatus() lanza InactiveAccountException",
+      "Regla Consistencia de Divisa: CurrencyMismatchException en Money y Account",
+      "Jerarquía excepciones de dominio: DomainException, InsufficientFundsException, InvalidAmountException, InactiveAccountException, CurrencyMismatchException, AccountNotFoundException",
+      "Tabla accounts con restricciones JPA (AccountEntity)",
+      "Tabla transactions con FK (TransactionEntity)",
+      "Entidades JPA separadas de dominio (AccountEntity, TransactionEntity)",
+      "Mapeadores AccountMapper, TransactionMapper",
+      "@Transactional en AccountRepositoryAdapter.save, TransactionRepositoryAdapter.save, TransferService.transfer",
+      "Pruebas Unitarias: AccountTest, MoneyTest, TransactionTest (JUnit 5 + AssertJ)",
+      "Pruebas Casos de Uso: CreateAccountServiceTest, GetBalanceServiceTest, TransferServiceTest con Mockito",
+      "Aislamiento del núcleo: domain y application no importan infrastructure"
+    ],
+    "failed_items": [
+      "Controladores REST en infrastructure.adapter.input: La carpeta existe pero NO contiene ningún @RestController. Solo package-info.java.",
+      "POST /accounts: Endpoint no implementado",
+      "GET /accounts/{id}/balance: Endpoint no implementado",
+      "POST /transactions/transfer: Endpoint no implementado",
+      "Endpoints bajo /api/v1/bank: Ninguna ruta API configurada",
+      "DTOs para Request y Response: No existen clases DTO",
+      "Validación JSR-303 (@Valid): No se usa; spring-boot-starter-validation no incluido",
+      "Manejador global de excepciones (@ControllerAdvice): No existe; DomainException no se mapea a HTTP Status",
+      "Pruebas de Integración adaptadores REST: No hay @WebMvcTest ni tests de MockMvc",
+      "Pruebas de Integración adaptadores Persistencia: No hay @DataJpaTest para AccountRepositoryAdapter ni TransactionRepositoryAdapter"
+    ]
+  },
+  "structure_compliance": {
+    "score": 5,
+    "missing_paths": [],
+    "note": "Todos los paquetes definidos existen físicamente. La brecha es funcional: infrastructure.adapter.input está vacío (solo package-info, sin controladores REST)."
+  },
+  "test_results": {
+    "command": "./gradlew test",
+    "passed": true,
+    "total": 58,
+    "failures": 0,
+    "output_summary": "BUILD SUCCESSFUL. 58 tests, 0 failures. CoreBankApplicationTest (1), CreateAccountServiceTest (3), GetBalanceServiceTest (3), TransferServiceTest (3), AccountTest (11), MoneyTest (8), TransactionTest (6), UuidAccountNumberGeneratorTest (23)."
+  },
+  "gaps": [
+    {
+      "severity": "critical",
+      "category": "infrastructure",
+      "description": "No existen Controladores REST. El checklist exige POST /accounts, GET /accounts/{id}/balance, POST /transactions/transfer bajo /api/v1/bank. infrastructure.adapter.input contiene solo package-info.java.",
+      "fix_suggestion": "Crear BankController (o similar) en infrastructure/adapter/input con @RestController, @RequestMapping(\"/api/v1/bank\"), inyectar CreateAccountUseCase, GetBalanceUseCase, TransferUseCase. Implementar los 3 endpoints con DTOs."
+    },
+    {
+      "severity": "critical",
+      "category": "infrastructure",
+      "description": "No existe manejador global de excepciones. Las DomainException (InsufficientFundsException, AccountNotFoundException, etc.) no se mapean a códigos HTTP (400, 404, 409).",
+      "fix_suggestion": "Crear GlobalExceptionHandler en infrastructure con @ControllerAdvice y @ExceptionHandler para DomainException y subclases, mapeando a ResponseEntity con status apropiados."
+    },
+    {
+      "severity": "critical",
+      "category": "infrastructure",
+      "description": "No existen DTOs para Request/Response de la API REST. No hay validación con @Valid.",
+      "fix_suggestion": "Crear DTOs (CreateAccountRequest, CreateAccountResponse, BalanceResponse, TransferRequest) en un paquete dto. Añadir spring-boot-starter-validation y usar @Valid en los @RequestBody."
+    },
+    {
+      "severity": "medium",
+      "category": "tests",
+      "description": "No hay Pruebas de Integración para adaptadores REST. El checklist exige tests de adaptadores de entrada (REST).",
+      "fix_suggestion": "Añadir tests con @WebMvcTest o @SpringBootTest + MockMvc para verificar los endpoints REST una vez implementados."
+    },
+    {
+      "severity": "medium",
+      "category": "tests",
+      "description": "No hay Pruebas de Integración para adaptadores de Persistencia. El checklist exige tests de adaptadores de salida (Persistencia).",
+      "fix_suggestion": "Añadir tests con @DataJpaTest para AccountJpaRepository/TransactionJpaRepository o tests de integración con H2 para AccountRepositoryAdapter/TransactionRepositoryAdapter."
+    }
+  ],
+  "next_recommended_action": "implement_infrastructure"
+}
