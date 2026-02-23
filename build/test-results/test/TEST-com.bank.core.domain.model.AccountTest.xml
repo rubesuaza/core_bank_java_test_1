@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.bank.core.domain.model.AccountTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-02-23T21:49:42" hostname="RubenS" time="0.137">
+  <properties/>
+  <testcase name="shouldThrowInactiveAccountExceptionWhenDepositingOnFrozenAccount()" classname="com.bank.core.domain.model.AccountTest" time="0.015"/>
+  <testcase name="shouldThrowInsufficientFundsExceptionWhenWithdrawingMoreThanBalance()" classname="com.bank.core.domain.model.AccountTest" time="0.03"/>
+  <testcase name="shouldThrowInvalidAmountExceptionWhenWithdrawAmountIsZero()" classname="com.bank.core.domain.model.AccountTest" time="0.006"/>
+  <testcase name="shouldWithdrawMoneyWhenSufficientFunds()" classname="com.bank.core.domain.model.AccountTest" time="0.003"/>
+  <testcase name="shouldThrowInactiveAccountExceptionWhenWithdrawingFromClosedAccount()" classname="com.bank.core.domain.model.AccountTest" time="0.007"/>
+  <testcase name="shouldThrowCurrencyMismatchExceptionWhenDepositingDifferentCurrency()" classname="com.bank.core.domain.model.AccountTest" time="0.004"/>
+  <testcase name="shouldDepositMoneyWhenAccountIsActive()" classname="com.bank.core.domain.model.AccountTest" time="0.003"/>
+  <testcase name="shouldThrowWhenTransferExceedsBalance()" classname="com.bank.core.domain.model.AccountTest" time="0.004"/>
+  <testcase name="shouldTransferBetweenAccountsWhenBothActive()" classname="com.bank.core.domain.model.AccountTest" time="0.006"/>
+  <testcase name="shouldThrowInvalidAmountExceptionWhenDepositAmountIsZero()" classname="com.bank.core.domain.model.AccountTest" time="0.004"/>
+  <testcase name="shouldThrowWhenTransferringToSameAccount()" classname="com.bank.core.domain.model.AccountTest" time="0.006"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

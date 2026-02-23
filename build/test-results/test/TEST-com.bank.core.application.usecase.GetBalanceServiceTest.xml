@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.bank.core.application.usecase.GetBalanceServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-02-23T21:49:41" hostname="RubenS" time="0.06">
+  <properties/>
+  <testcase name="shouldReturnBalanceWhenAccountExists()" classname="com.bank.core.application.usecase.GetBalanceServiceTest" time="0.016"/>
+  <testcase name="shouldReturnZeroBalanceWhenAccountHasZeroBalance()" classname="com.bank.core.application.usecase.GetBalanceServiceTest" time="0.006"/>
+  <testcase name="shouldThrowAccountNotFoundExceptionWhenAccountDoesNotExist()" classname="com.bank.core.application.usecase.GetBalanceServiceTest" time="0.03"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
