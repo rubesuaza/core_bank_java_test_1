@@ -17,6 +17,9 @@ public final class TransferCommand {
         this.fromAccount = Objects.requireNonNull(fromAccount, "fromAccount must not be null");
         this.toAccount = Objects.requireNonNull(toAccount, "toAccount must not be null");
         this.amount = Objects.requireNonNull(amount, "amount must not be null");
+        if (this.amount.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("amount must be positive");
+        }
     }
 
     public UUID getFromAccount() {
@@ -29,6 +32,25 @@ public final class TransferCommand {
 
     public BigDecimal getAmount() {
         return amount;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        TransferCommand that = (TransferCommand) o;
+        return Objects.equals(fromAccount, that.fromAccount)
+                && Objects.equals(toAccount, that.toAccount)
+                && Objects.equals(amount, that.amount);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(fromAccount, toAccount, amount);
     }
 }
 

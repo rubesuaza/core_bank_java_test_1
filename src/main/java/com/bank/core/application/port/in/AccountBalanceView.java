@@ -30,5 +30,24 @@ public final class AccountBalanceView {
     public String getCurrency() {
         return currency;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        AccountBalanceView that = (AccountBalanceView) o;
+        return Objects.equals(accountId, that.accountId)
+                && Objects.equals(balance, that.balance)
+                && Objects.equals(currency, that.currency);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(accountId, balance, currency);
+    }
 }
 

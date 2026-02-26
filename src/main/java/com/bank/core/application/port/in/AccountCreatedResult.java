@@ -48,5 +48,37 @@ public final class AccountCreatedResult {
     public String getCurrency() {
         return currency;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        AccountCreatedResult that = (AccountCreatedResult) o;
+        return Objects.equals(accountId, that.accountId)
+                && Objects.equals(accountNumber, that.accountNumber)
+                && Objects.equals(status, that.status)
+                && Objects.equals(balance, that.balance)
+                && Objects.equals(currency, that.currency);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(accountId, accountNumber, status, balance, currency);
+    }
+
+    @Override
+    public String toString() {
+        return "AccountCreatedResult{" +
+                "accountId=" + accountId +
+                ", accountNumber='" + accountNumber + '\'' +
+                ", status='" + status + '\'' +
+                ", balance=" + balance +
+                ", currency='" + currency + '\'' +
+                '}';
+    }
 }
 
